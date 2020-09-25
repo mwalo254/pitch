@@ -1,0 +1,26 @@
+{% extends 'base.html'%} 
+
+{% block styles%}
+    {{ super() }}
+    <link href="https://fonts.googleapis.com/css?family=Great+Vibes&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid welcome-page">
+        <div class="container" style="font-size: 30px;font-family: Great Vibes;"> whitesmoke; font-family: Great Vibes;">
+        
+        <div class="row">
+            <div class="col-md-12 welcome">
+                {% if current_user.is_authenticated%}
+                <h1 style="align-items: center; color:deepskyblue; padding-top: 100px; margin-left: 200px;">Welcome to the online Pitch application!</h1><br><br>
+                <h4 style="margin-left: 150px; margin-right: 200px">In life, you only have 60 seconds to impress someone. 1 minute can make or break you. How do we make sure that you use your 1 minute to actually say something meaningful?<br>
+                    Here is the application that allows you to use that one minute wisely!</h4><br>
+                    <h4 style="margin-left: 150px; margin-right: 200px">You have only to click here to <a id="start" href="{{url_for('auth.login')}}"><button type="submit" class="btn btn-success">Sign In</button></a></h4><br><br>
+                    <h4 style="margin-left: 150px; margin-right: 200px">To see all the Pitches that others have postes, you only have to click here <a id="start" href="{{url_for('category.index')}}"><button type="submit" class="btn btn-success">view all Pitches</button></a> and you can submit your one minute pitch and other users will vote on it and leave comments to give their feedback on it and you can like or dislike the pitches that others have posted and you can leave the comments.
+                    </h4>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

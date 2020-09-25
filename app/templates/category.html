@@ -1,0 +1,57 @@
+{% extends 'bootstrap/base.html' %}
+{% import 'macros.html' as macro %}
+{% block navbar %}
+{% include 'navbar.html'%}
+{% endblock %}
+
+{% block styles%}
+    {{ super() }}
+    <link href="https://fonts.googleapis.com/css?family=Great+Vibes&display=swap" rel="stylesheet">
+{% endblock %}
+
+  {% block content %}
+    <div class="container" style=" font-family: Great Vibes;font-size: 40px;">
+
+        <h1 style="align-items: center; color:blue;margin-bottom: 50px; margin-left: 200px;"><u>Welcome again to the online Pitch application!</u></h1><br>
+        <h2 style="margin-left: 150px; margin-right: 200px;">In life, you only have 60 seconds to impress someone. 1 minute can make or break you. How do we make sure that you use your 1 minute to actually say something meaningful?<br>
+            Here is the application that allows you to use that one minute wisely!</h2><br>
+            <h2 style="margin-left: 150px; margin-right: 200px; ">You can submit your one minute pitch and other users will vote on it and leave comments to give their feedback on it and you can like or dislike the pitches that others have posted and you can leave the comments.
+            </h2>
+            
+
+
+      <h1 style="color:blue;text-align: center"><u>Pitch Categories</u></h1>
+      <br>
+      <ul class="nav nav-pills nav-justified nav-fill" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" data-toggle="tab" href="#product"><h2>Product Pitches</h2></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#interview"><h2>Interview Pitches</h2></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#pickup"><h2>Pickup Line</h2></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#promotion"><h2>Promotion pitches</h2></a>
+        </li>
+      </ul>
+
+      <div class="tab-content">
+        
+          <div id="pickup" class="container tab-pane fade"><br>
+          {{ macro.display(pickup)}}
+        </div>
+        <div id="interview" class="container tab-pane fade"><br>
+          {{ macro.display(interview)}}
+        </div>
+        <div id="promotion" class="container tab-pane fade"><br>
+            {{ macro.display(promotion)}}
+        </div>
+        <div id="product" class="container tab-pane active"><br>
+          {{ macro.display(product) }}
+        </div>
+        
+      </div>
+    </div>
+  {% endblock %}

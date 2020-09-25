@@ -1,0 +1,74 @@
+{% extends 'bootstrap/base.html' %}
+{% block styles%}
+    {{ super() }}
+    <link href="https://fonts.googleapis.com/css?family=Great+Vibes&display=swap" rel="stylesheet">
+{% endblock %}
+{% block content %}
+<div class="container" style="font-family: Great Vibes;font-size: 40px;">
+<div class="row">
+<!-- displaying  Username-->
+  <div class="col-md-4">
+    <h3> {{user.username| capitalize}} </h3>
+
+    <!--Displaying user bio-->
+    {% if user.bio %}
+      <p> {{user.bio}}</p>
+    {%else%}
+      <p> {{user.username| capitalize}} has no bio </p>
+    {% endif %}
+    {% if user == current_user %}
+      <a href="{{url_for('main.update_profile',uname=user.username)}}">Edit profile</a>
+    {% endif %}
+
+    
+  </div>
+
+  <!--Display profile photo-->
+  <div class="col-md-4">
+
+    {% if user.profile_pic_path %}
+    <img src="{{url_for('static',filename=user.profile_pic_path)}}" alt="" class="img-thumbnail">
+    {%else%}
+    <p>No profile picture</p>
+    {% endif %}
+    {% if user == current_user %}
+    <form  action="{{url_for('main.update_profile',uname=user.username)}}" method="post" enctype = "multipart/form-data">
+
+      <input type="file"  name="photo" class="form-control" required>
+      <input type="submit" style="align-items: center; color:deepskyblue;margin-bottom: 50px;">
+    
+    {% endif %}
+</form>
+     </div> 
+  </div>
+
+  <div class="row">
+      <h2>My pitches</h2>
+	
+		{% for pitch in description %}
+		
+		<div class="col-md-6">
+			<div class="card text-center" style="width: 30rem;">
+					
+				<div class="card-body">
+			<h1 class="card-title" style="font-size: 30px;color: blue;margin-left: 100px;">{{pitch.title}}</h1>
+			
+					<div class="card-text" style="font-size: 30px;"><h2>{{pitch.description}}</h2></div>
+					<footer> <h5 style="font-size: 25px;color: blueviolet;">Posted by {{pitch.user.username}}</h5></footer>
+				
+				
+                    <a href="{{url_for('main.new_comment',pitch_id = pitch.id)}}" class="btn btn-primary" style="font-size: 20px;"> comment</a>
+                    <a href="{{url_for('main.upvote',pitch_id = pitch.id)}}" class= "btn btn-primary btn-sm" style="font-size: 20px;">Like <span>{{pitch.upvotes.count()}}</span></a>
+                    <a href="{{url_for('main.downvote',pitch_id = pitch.id)}}" class= "btn btn-danger btn-sm" style="font-size: 20px;">Dislike <span>{{pitch.downvotes.count()}}</span></a>
+
+				</div>
+			</div>
+		</div>
+
+		
+        {% endfor %}
+        
+    </div>
+</div>
+
+{% endblock %}
