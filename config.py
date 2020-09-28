@@ -24,8 +24,6 @@ class Config:
 
 
 class DevConfig(Config):
-    SECRET_KEY = 'de99a620c50f2990e87144735cd357e7'
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2:///pitch_test'
     DEBUG = True
 
 
