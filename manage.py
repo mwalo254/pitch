@@ -6,7 +6,7 @@ from app import create_app, db
 from app.models import User, Role, Pitch, Comment
 
 # Creating app instance
-app = create_app(os.environ.get("ENVIRONMENT"))
+app = create_app(os.environ.get("FLASK_ENV"))
 
 
 manager = Manager(app)
