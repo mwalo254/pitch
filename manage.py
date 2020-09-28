@@ -8,7 +8,6 @@ from app.models import User, Role, Pitch, Comment
 # Creating app instance
 app = create_app(os.environ.get("FLASK_ENV"))
 
-
 manager = Manager(app)
 migrate = Migrate(app,db)
 
